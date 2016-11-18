@@ -1,31 +1,36 @@
-= Async non blocking code examples for the JVM
+= Async non-blocking code examples for the JVM
 Reactive Meetup Lucerne https://www.meetup.com/de-DE/Luzern-reactive-concurrent-distributed-solutions-on-the-JVM/
 :imagesdir: ./docs
 
 == Introduction
 
-We are a group of ...
+We are a group of software developers with a monthly meetup in https://goo.gl/maps/NpfJhDWsCnw[Lucerne (Switzerland)].
+We are interested in programming questions around concurrency, distributed systems, consistency...
 
-There are a lot of ...
+We are learning new ways how to write code that scales up (vertically) and out (horizontally).
+There are many technologies out there today (libraries, languages, ...), most of them are "pretty new". Some work well for *scaling up* (RxJava, akka-stream, CompletableFuture, ...),
+others for *scaling out* (Vert.x, Hazelcast, akka, ...) and some of them even for *scaling up _and_ out* (Vert.x, akka, ...).
 
-Why - How - What
+To get used with the various technologies we defined first a couple of "simple" coding challenges.
+We try now to implement a set of example-solutions and share them.
 
-== Async non blocking coding challenges
+Have fun in comparing the results and feel free to provide feedback, improvements or contributions via GitHub issues and pull requests.
 
-=== Challenge 1
+Sincerly, +
+the members of the https://www.meetup.com/de-DE/Luzern-reactive-concurrent-distributed-solutions-on-the-JVM/[Lucerne reactive meetup group]
 
-...
+
+== Async non-blocking coding challenges
+
+Rules
+
+* All examples *must* be implemented without blocking threads
+** except: it's ok to block the main thread to keep the JVM alive until the example completed
 
 == Example solutions
 
 |===
-| Language | Library | Challenge 1  | Challenge 2  | Challenge 3
-
-| Java 8
-| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
-| link:./src/main/java/challenge1/guava/ListenableFutureExample.java[]
-|
-|
+| Language | Library | Challenge 1: combining the results of "parallel" calls  | Challenge 2: fallback in case of timeout | Challenge 3: stream of temperature values
 
 | Java 8
 | https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
@@ -44,9 +49,70 @@ Why - How - What
 | link:./src/main/scala/challenge1/akka_stream/AkkaStreamExample.scala[]
 |
 |
+
+| Java 8
+| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
+| link:./src/main/java/challenge1/guava/ListenableFutureExample.java[]
+|
+|
 |===
 
-== Feedback
+== Challenge descriptions
 
-Please use GitHub issues and pull requests for feedback or contributions.
+=== Challenge 1: combining the results of "parallel" calls
+
+....
+
+                [PriceService1::getPrice]
+
+                          &&
+
+[avg price?] -> [PriceService1::getPrice] -> [println avg price]
+
+                          &&
+
+                [PriceService1::getPrice]
+
+
+....
+
+Because the link:./src/main/java/externalLegacyCodeNotUnderOurControl/PriceService.java[price services] in this challenge are "slow", it's a good idea to call them "in parallel" and combine afterwards the results.
+It's important to not block the "avg price?" caller and to do the calculation of the average price asynchronously.
+
+Credits go to https://github.com/christophsuter for his "concurrency notation".
+
+=== Challenge 2: fallback in case of timeout
+
+....
+
+                      [PriceService::getPrice ... ... ... ... ... ... ]
+
+[current price?] ->             ||      -> [println price or fallback value]
+
+                             [timeout]
+
+....
+
+Sometimes things don't work as expected. In this challenge here the link:./src/main/java/externalLegacyCodeNotUnderOurControl/PriceService.java[price service] is extra slow and "takes forever"
+to deliver the price. Because we can't fix the price service we use instead a fallback mechanism to keep our code "responsive":
+If the price service doesn't answer within 2 seconds, we provide a fallback value of `42`.
+
+Don't forget to "cancel" the price service in case of timeouts.
+
+=== Challenge 3: stream of temperature values
+
+....
+
+
+[T1] ... [T2] ... [T3] ... [T4] ... [T5] ... [T6] ... [T7] ... [T8] ... [T9] ...
+
+                    \                          \                          \
+                     -> [println min max]       -> [println min max]       -> [println min max]
+
+....
+
+We have a link:./src/main/java/externalLegacyCodeNotUnderOurControl/TemperatureValueSource.java[source of data].
+It pushes every 2 seconds a new value `Tx` (the current temperature) to its observers.
+
+We have one observer which prints out every 10 seconds the min and the max temperature.
 
