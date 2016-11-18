@@ -79,7 +79,7 @@ Rules
 Because the link:./src/main/java/externalLegacyCodeNotUnderOurControl/PriceService.java[price services] in this challenge are "slow", it's a good idea to call them "in parallel" and combine afterwards the results.
 It's important to not block the "avg price?" caller and to do the calculation of the average price asynchronously.
 
-Credits go to https://github.com/christophsuter for his "concurrency notation".
+Credits go to @christophsuter for his "concurrency notation".
 
 === Challenge 2: fallback in case of timeout
 
