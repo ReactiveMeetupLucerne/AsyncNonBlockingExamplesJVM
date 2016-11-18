@@ -116,3 +116,18 @@ It pushes every 2 seconds a new value `Tx` (the current temperature) to its obse
 
 We have one observer which prints out every 10 seconds the min and the max temperature.
 
+=== Challenge 4: request collapsing
+
+....
+
+        [current price?] ->                    -> [println price]
+                            \                /
+
+[current price?] -> [PriceService1::getPrice]  -> [println price]
+
+
+....
+
+Because calls to our link:./src/main/java/externalLegacyCodeNotUnderOurControl/PriceService.java[price service]
+are "expensive", we'd like to "collapse" concurrent requests. This is a little bit like caching, but instead
+of just sharing the results we share the ongoing calculation of a result.
