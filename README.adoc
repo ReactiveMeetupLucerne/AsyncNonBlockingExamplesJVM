@@ -12,7 +12,7 @@ There are many technologies out there today (libraries, languages, ...), most of
 others for *scaling out* (Vert.x, Hazelcast, akka, ...) and some of them even for *scaling up _and_ out* (Vert.x, akka, ...).
 
 To get used with the various technologies we defined first a couple of "simple" coding challenges.
-We try now to implement a set of example-solutions and share them.
+We try now to implement them and share the solutions.
 
 Have fun in comparing the results and feel free to provide feedback, improvements or contributions via GitHub issues and pull requests.
 
