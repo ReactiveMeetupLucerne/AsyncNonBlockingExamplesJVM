@@ -17,7 +17,7 @@ We try now to implement them and share the solutions.
 Have fun in comparing the results and feel free to provide feedback, improvements or contributions via GitHub issues and pull requests.
 
 Sincerly, +
-the members of the https://www.meetup.com/de-DE/Luzern-reactive-concurrent-distributed-solutions-on-the-JVM/[Lucerne reactive meetup group]
+the participating members of the https://www.meetup.com/de-DE/Luzern-reactive-concurrent-distributed-solutions-on-the-JVM/[Lucerne reactive meetup group]
 
 
 == Async non-blocking coding challenges
