@@ -6,6 +6,7 @@ import externalLegacyCodeNotUnderOurControl.PriceService;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 import static externalLegacyCodeNotUnderOurControl.PrintlnWithThreadname.println;
 
@@ -16,6 +17,22 @@ public class ListenableFutureExample {
         PriceService priceService2 = new PriceService();
         PriceService priceService3 = new PriceService();
 
+        calculateAveragePriceAsync(
+                priceService1,
+                priceService2,
+                priceService3,
+                avgPrice -> println("Average: " + avgPrice)
+        );
+
+        println("I wasn't blocked... :-)");
+
+        TimeUnit.SECONDS.sleep(10);
+    }
+
+    private static void calculateAveragePriceAsync(PriceService priceService1,
+                                                   PriceService priceService2,
+                                                   PriceService priceService3,
+                                                   Consumer<Double> resultConsumer) {
         ListeningExecutorService executorService = MoreExecutors.listeningDecorator(
                 Executors.newFixedThreadPool(
                         3,
@@ -33,7 +50,7 @@ public class ListenableFutureExample {
                     @Override
                     public void onSuccess(List<Integer> result) {
                         double average = result.stream().mapToInt(value -> value).average().getAsDouble();
-                        println("Average: " + average);
+                        resultConsumer.accept(average);
                     }
 
                     @Override
@@ -43,8 +60,6 @@ public class ListenableFutureExample {
                 },
                 executorService
         );
-
-        TimeUnit.SECONDS.sleep(10);
     }
 
 }
