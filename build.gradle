@@ -1,0 +1,37 @@
+plugins {
+    id "com.github.ben-manes.versions" version "0.13.0"
+}
+
+apply plugin: 'java'
+
+version = '0.0.1-SNAPSHOT'
+
+def fileEncoding = 'UTF-8'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "com.google.guava:guava:20.0"
+    compile "io.reactivex:rxjava:1.2.2"
+
+    testCompile "junit:junit:4.12"
+    testCompile "com.jayway.awaitility:awaitility:1.7.0"
+}
+
+test {
+    systemProperty 'file.encoding', fileEncoding
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = fileEncoding
+}
+
+// http://forums.gradle.org/gradle/topics/set_maxparallelforks_to_number_of_cores_on_the_current_machine
+tasks.withType(Test) {
+    maxParallelForks = Runtime.getRuntime().availableProcessors()
+}
