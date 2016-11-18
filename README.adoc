@@ -1,0 +1,52 @@
+= Async non blocking code examples for the JVM
+Reactive Meetup Lucerne https://www.meetup.com/de-DE/Luzern-reactive-concurrent-distributed-solutions-on-the-JVM/
+:imagesdir: ./docs
+
+== Introduction
+
+We are a group of ...
+
+There are a lot of ...
+
+Why - How - What
+
+== Async non blocking coding challenges
+
+=== Challenge 1
+
+...
+
+== Example solutions
+
+|===
+| Language | Library | Challenge 1  | Challenge 2  | Challenge 3
+
+| Java 8
+| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
+| link:./src/main/java/challenge1/guava/ListenableFutureExample.java[]
+|
+|
+
+| Java 8
+| https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
+|
+|
+|
+
+| Java 8
+| https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0[RxJava 2] Flowable
+|
+|
+|
+
+| Scala 2.12
+| http://doc.akka.io/docs/akka/2.4/scala/stream/index.html[akka-stream]
+| link:./src/main/scala/challenge1/akka_stream/AkkaStreamExample.scala[]
+|
+|
+|===
+
+== Feedback
+
+Please use GitHub issues and pull requests for feedback or contributions.
+
