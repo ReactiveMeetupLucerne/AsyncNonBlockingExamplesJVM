@@ -51,11 +51,13 @@ public class ListenableFutureExample {
                     public void onSuccess(List<Integer> result) {
                         double average = result.stream().mapToInt(value -> value).average().getAsDouble();
                         resultConsumer.accept(average);
+	                    executorService.shutdown();
                     }
 
                     @Override
                     public void onFailure(Throwable t) {
                         t.printStackTrace();
+	                    executorService.shutdown();
                     }
                 },
                 executorService
