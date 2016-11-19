@@ -27,38 +27,6 @@ Rules
 * All examples *must* be implemented without blocking threads
 ** except: it's ok to block the main thread to keep the JVM alive until the example completed
 
-== Example solutions
-
-|===
-| Language | Library | Challenge 1: combining the results of "parallel" calls  | Challenge 2: fallback in case of timeout | Challenge 3: stream of temperature values
-
-| Java 8
-| https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
-|
-|
-|
-
-| Java 8
-| https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0[RxJava 2] Flowable
-|
-|
-|
-
-| Scala 2.12
-| http://doc.akka.io/docs/akka/2.4/scala/stream/index.html[akka-stream]
-| link:./src/main/scala/challenge1/akka_stream/AkkaStreamExample.scala[]
-|
-|
-
-| Java 8
-| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
-| link:./src/main/java/challenge1/guava/ListenableFutureExample.java[]
-|
-|
-|===
-
-== Challenge descriptions
-
 === Challenge 1: combining the results of "parallel" calls
 
 ....
@@ -81,6 +49,58 @@ It's important to not block the "avg price?" caller and to do the calculation of
 
 Credits go to https://github.com/christophsuter for his "concurrency notation".
 
+|===
+| Language | Library | Example
+
+| Java
+| https://docs.oracle.com/javase/tutorial/essential/concurrency/exinter.html[ExecutorService and Futures (JDK 5)]
+|
+
+| Java
+| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
+| link:./src/main/java/challenge1/guava/ListenableFutureExample.java[]
+
+| Java
+| https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html[CompletableFuture (JDK 8)]
+|
+
+| Java
+| https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
+|
+
+| Java
+| https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0[RxJava 2] Flowable
+|
+
+| Java
+| https://github.com/reactor/reactor-core[reactor-core Flux]
+|
+
+| Scala
+| http://doc.akka.io/docs/akka/2.4/scala/stream/index.html[akka-stream]
+| link:./src/main/scala/challenge1/akka_stream/AkkaStreamExample.scala[]
+
+| Java
+| http://doc.akka.io/docs/akka/2.4/java/stream/index.html[akka-stream]
+|
+
+| Scala
+| http://doc.akka.io/docs/akka/2.4/scala/index-actors.html[akka (actors)]
+|
+
+| Java
+| http://doc.akka.io/docs/akka/2.4/java/index-actors.html[akka (actors)]
+|
+
+| Java
+| http://vertx.io/docs/vertx-core/java/[Vert.x]
+|
+
+| ...
+| ... yours?
+|
+|===
+
 === Challenge 2: fallback in case of timeout
 
 ....
@@ -99,6 +119,58 @@ If the price service doesn't answer within 2 seconds, we provide a fallback valu
 
 Don't forget to "cancel" the price service in case of timeouts.
 
+|===
+| Language | Library | Example
+
+| Java
+| https://docs.oracle.com/javase/tutorial/essential/concurrency/exinter.html[ExecutorService and Futures (JDK 5)]
+|
+
+| Java
+| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
+|
+
+| Java
+| https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html[CompletableFuture (JDK 8)]
+|
+
+| Java
+| https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
+|
+
+| Java
+| https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0[RxJava 2] Flowable
+|
+
+| Java
+| https://github.com/reactor/reactor-core[reactor-core Flux]
+|
+
+| Scala
+| http://doc.akka.io/docs/akka/2.4/scala/stream/index.html[akka-stream]
+|
+
+| Java
+| http://doc.akka.io/docs/akka/2.4/java/stream/index.html[akka-stream]
+|
+
+| Scala
+| http://doc.akka.io/docs/akka/2.4/scala/index-actors.html[akka (actors)]
+|
+
+| Java
+| http://doc.akka.io/docs/akka/2.4/java/index-actors.html[akka (actors)]
+|
+
+| Java
+| http://vertx.io/docs/vertx-core/java/[Vert.x]
+|
+
+| ...
+| ... yours?
+|
+|===
+
 === Challenge 3: stream of temperature values
 
 ....
@@ -116,6 +188,59 @@ It pushes every 2 seconds a new value `Tx` (the current temperature) to its obse
 
 We have one observer which prints out every 10 seconds the min and the max temperature.
 
+|===
+| Language | Library | Example
+
+| Java
+| https://docs.oracle.com/javase/tutorial/essential/concurrency/exinter.html[ExecutorService and Futures (JDK 5)]
+|
+
+| Java
+| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
+|
+
+| Java
+| https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html[CompletableFuture (JDK 8)]
+|
+
+| Java
+| https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
+|
+
+| Java
+| https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0[RxJava 2] Flowable
+|
+
+| Java
+| https://github.com/reactor/reactor-core[reactor-core Flux]
+|
+
+| Scala
+| http://doc.akka.io/docs/akka/2.4/scala/stream/index.html[akka-stream]
+|
+
+| Java
+| http://doc.akka.io/docs/akka/2.4/java/stream/index.html[akka-stream]
+|
+
+| Scala
+| http://doc.akka.io/docs/akka/2.4/scala/index-actors.html[akka (actors)]
+|
+
+| Java
+| http://doc.akka.io/docs/akka/2.4/java/index-actors.html[akka (actors)]
+|
+
+| Java
+| http://vertx.io/docs/vertx-core/java/[Vert.x]
+|
+
+| ...
+| ... yours?
+|
+|===
+
+
 === Challenge 4: request collapsing
 
 ....
@@ -131,3 +256,55 @@ We have one observer which prints out every 10 seconds the min and the max tempe
 Because calls to our link:./src/main/java/externalLegacyCodeNotUnderOurControl/PriceService.java[price service]
 are "expensive", we'd like to "collapse" concurrent requests. This is a little bit like caching, but instead
 of just sharing the results we share the ongoing calculation of a result.
+
+|===
+| Language | Library | Example
+
+| Java
+| https://docs.oracle.com/javase/tutorial/essential/concurrency/exinter.html[ExecutorService and Futures (JDK 5)]
+|
+
+| Java
+| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
+|
+
+| Java
+| https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html[CompletableFuture (JDK 8)]
+|
+
+| Java
+| https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
+|
+
+| Java
+| https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0[RxJava 2] Flowable
+|
+
+| Java
+| https://github.com/reactor/reactor-core[reactor-core Flux]
+|
+
+| Scala
+| http://doc.akka.io/docs/akka/2.4/scala/stream/index.html[akka-stream]
+|
+
+| Java
+| http://doc.akka.io/docs/akka/2.4/java/stream/index.html[akka-stream]
+|
+
+| Scala
+| http://doc.akka.io/docs/akka/2.4/scala/index-actors.html[akka (actors)]
+|
+
+| Java
+| http://doc.akka.io/docs/akka/2.4/java/index-actors.html[akka (actors)]
+|
+
+| Java
+| http://vertx.io/docs/vertx-core/java/[Vert.x]
+|
+
+| ...
+| ... yours?
+|
+|===
