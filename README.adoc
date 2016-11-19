@@ -57,7 +57,7 @@ Credits go to https://github.com/christophsuter for his "concurrency notation".
 |
 
 | Java
-| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
+| Google Guava https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
 | link:./src/main/java/challenge1/guava/ListenableFutureExample.java[]
 
 | Java
@@ -127,7 +127,7 @@ Don't forget to "cancel" the price service in case of timeouts.
 |
 
 | Java
-| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
+| Google Guava https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
 |
 
 | Java
@@ -196,7 +196,7 @@ We have one observer which prints out every 10 seconds the min and the max tempe
 |
 
 | Java
-| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
+| Google Guava https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
 |
 
 | Java
@@ -265,7 +265,7 @@ of just sharing the results we share the ongoing calculation of a result.
 |
 
 | Java
-| Google Guava 20 https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
+| Google Guava https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
 |
 
 | Java
