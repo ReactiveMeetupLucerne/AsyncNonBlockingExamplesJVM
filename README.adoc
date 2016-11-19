@@ -185,7 +185,6 @@ Don't forget to "cancel" the price service in case of timeouts.
 
 We have a link:./src/main/java/externalLegacyCodeNotUnderOurControl/TemperatureValueSource.java[source of data].
 It pushes every 2 seconds a new value `Tx` (the current temperature) to its observers.
-
 We have one observer which prints out every 10 seconds the min and the max temperature.
 
 |===
