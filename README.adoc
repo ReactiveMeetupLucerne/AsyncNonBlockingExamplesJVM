@@ -76,6 +76,10 @@ Credits go to https://github.com/christophsuter for his "concurrency notation".
 | https://github.com/reactor/reactor-core[reactor-core Flux]
 |
 
+| Java
+| JDK 9 API http://jsr166-concurrency.10961.n7.nabble.com/jdk9-Candidate-classes-Flow-and-SubmissionPublisher-td11967.html[Flow / SubmissionPublisher] (http://g.oswego.edu/dl/concurrency-interest[jsr166-4jdk8])
+|
+
 | Scala
 | http://doc.akka.io/docs/akka/2.4/scala/stream/index.html[akka-stream]
 | link:./src/main/scala/challenge1/akka_stream/AkkaStreamExample.scala[]
@@ -146,6 +150,10 @@ Don't forget to "cancel" the price service in case of timeouts.
 | https://github.com/reactor/reactor-core[reactor-core Flux]
 |
 
+| Java
+| JDK 9 API http://jsr166-concurrency.10961.n7.nabble.com/jdk9-Candidate-classes-Flow-and-SubmissionPublisher-td11967.html[Flow / SubmissionPublisher] (http://g.oswego.edu/dl/concurrency-interest[jsr166-4jdk8])
+|
+
 | Scala
 | http://doc.akka.io/docs/akka/2.4/scala/stream/index.html[akka-stream]
 |
@@ -212,6 +220,10 @@ We have one observer which prints out every 10 seconds the min and the max tempe
 
 | Java
 | https://github.com/reactor/reactor-core[reactor-core Flux]
+|
+
+| Java
+| JDK 9 API http://jsr166-concurrency.10961.n7.nabble.com/jdk9-Candidate-classes-Flow-and-SubmissionPublisher-td11967.html[Flow / SubmissionPublisher] (http://g.oswego.edu/dl/concurrency-interest[jsr166-4jdk8])
 |
 
 | Scala
@@ -281,6 +293,10 @@ of just sharing the results we share the ongoing calculation of a result.
 
 | Java
 | https://github.com/reactor/reactor-core[reactor-core Flux]
+|
+
+| Java
+| JDK 9 API http://jsr166-concurrency.10961.n7.nabble.com/jdk9-Candidate-classes-Flow-and-SubmissionPublisher-td11967.html[Flow / SubmissionPublisher] (http://g.oswego.edu/dl/concurrency-interest[jsr166-4jdk8])
 |
 
 | Scala
