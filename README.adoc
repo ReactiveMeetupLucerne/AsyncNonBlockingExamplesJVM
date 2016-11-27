@@ -8,10 +8,13 @@ We are a group of software developers with a monthly meetup in https://goo.gl/ma
 We are interested in programming questions around concurrency, distributed systems, consistency...
 
 We are learning new ways how to write code that scales up (vertically) and out (horizontally).
-There are many technologies out there today (libraries, languages, ...), most of them are "pretty new". Some work well for *scaling up* (RxJava, akka-stream, CompletableFuture, ...),
-others for *scaling out* (Vert.x, Hazelcast, akka, ...) and some of them even for *scaling up _and_ out* (Vert.x, akka, ...).
+There are many technologies out there today (libraries, languages, ...), most of them are "pretty new".
+Some work well for *scaling up* (RxJava, akka-stream, CompletableFuture, ...), others for *scaling out* (Vert.x, Hazelcast, akka, ...).
+Some of them seem to be good for *scaling up _and_ out* (Vert.x, akka, ...).
 
-To get used with the various technologies we defined first a couple of "simple" coding challenges.
+A typical core characteristic of these languages and libraries is the "async and non-blocking" working manner.
+
+To get used to "async and non-blocking" and the various technologies we defined a couple of "simple" coding challenges.
 We try now to implement them and share the solutions.
 
 Have fun in comparing the results and feel free to provide feedback, improvements or contributions via GitHub issues and pull requests.
