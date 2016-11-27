@@ -10,7 +10,7 @@ We are interested in programming questions around concurrency, distributed syste
 We are learning new ways how to write code that scales up (vertically) and out (horizontally).
 There are many technologies out there today (libraries, languages, ...), most of them are "pretty new".
 Some work well for *scaling up* (RxJava, akka-stream, CompletableFuture, ...), others for *scaling out* (Vert.x, Hazelcast, akka, ...).
-Some of them seem to be good for *scaling up _and_ out* (Vert.x, akka, ...).
+Some of them seem to be good for scaling up *and* out (Vert.x, akka, ...).
 
 A typical core characteristic of these languages and libraries is the "async and non-blocking" working manner.
 
@@ -108,6 +108,10 @@ Credits go to https://github.com/christophsuter for his "concurrency notation".
 |
 
 | ...
+| ...
+|
+
+| ...
 | ... yours?
 |
 |===
@@ -183,6 +187,10 @@ Don't forget to "cancel" the price service in case of timeouts.
 
 | Java
 | https://github.com/aol/cyclops-react[cyclops-react]
+|
+
+| ...
+| ...
 |
 
 | ...
@@ -262,6 +270,10 @@ We have one observer which prints out every 10 seconds the min and the max tempe
 |
 
 | ...
+| ...
+|
+
+| ...
 | ... yours?
 |
 |===
@@ -336,6 +348,10 @@ of just sharing the results we share the ongoing calculation of a result.
 
 | Java
 | https://github.com/aol/cyclops-react[cyclops-react]
+|
+
+| ...
+| ...
 |
 
 | ...
