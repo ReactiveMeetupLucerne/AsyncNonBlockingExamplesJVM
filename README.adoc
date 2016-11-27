@@ -100,6 +100,10 @@ Credits go to https://github.com/christophsuter for his "concurrency notation".
 | http://vertx.io/docs/vertx-core/java/[Vert.x]
 |
 
+| Java
+| https://github.com/aol/cyclops-react[cyclops-react]
+|
+
 | ...
 | ... yours?
 |
@@ -174,6 +178,10 @@ Don't forget to "cancel" the price service in case of timeouts.
 | http://vertx.io/docs/vertx-core/java/[Vert.x]
 |
 
+| Java
+| https://github.com/aol/cyclops-react[cyclops-react]
+|
+
 | ...
 | ... yours?
 |
@@ -244,6 +252,10 @@ We have one observer which prints out every 10 seconds the min and the max tempe
 
 | Java
 | http://vertx.io/docs/vertx-core/java/[Vert.x]
+|
+
+| Java
+| https://github.com/aol/cyclops-react[cyclops-react]
 |
 
 | ...
@@ -317,6 +329,10 @@ of just sharing the results we share the ongoing calculation of a result.
 
 | Java
 | http://vertx.io/docs/vertx-core/java/[Vert.x]
+|
+
+| Java
+| https://github.com/aol/cyclops-react[cyclops-react]
 |
 
 | ...
