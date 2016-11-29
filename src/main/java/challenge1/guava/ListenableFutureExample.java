@@ -12,6 +12,13 @@ import static externalLegacyCodeNotUnderOurControl.PrintlnWithThreadname.println
 
 public class ListenableFutureExample {
 
+    private static final ListeningExecutorService EXECUTOR_SERVICE = MoreExecutors.listeningDecorator(
+            Executors.newFixedThreadPool(
+                    3,
+                    new ThreadFactoryBuilder().setDaemon(true).setNameFormat("threadPool-%d").build()
+            )
+    );
+
     public static void main(String[] args) throws InterruptedException {
         PriceService priceService1 = new PriceService();
         PriceService priceService2 = new PriceService();
@@ -33,16 +40,10 @@ public class ListenableFutureExample {
                                                    PriceService priceService2,
                                                    PriceService priceService3,
                                                    Consumer<Double> resultConsumer) {
-        ListeningExecutorService executorService = MoreExecutors.listeningDecorator(
-                Executors.newFixedThreadPool(
-                        3,
-                        new ThreadFactoryBuilder().setDaemon(true).setNameFormat("threadPool-%d").build()
-                )
-        );
 
-        ListenableFuture<Integer> price1Future = executorService.submit(priceService1::getPrice);
-        ListenableFuture<Integer> price2Future = executorService.submit(priceService2::getPrice);
-        ListenableFuture<Integer> price3Future = executorService.submit(priceService3::getPrice);
+        ListenableFuture<Integer> price1Future = EXECUTOR_SERVICE.submit(priceService1::getPrice);
+        ListenableFuture<Integer> price2Future = EXECUTOR_SERVICE.submit(priceService2::getPrice);
+        ListenableFuture<Integer> price3Future = EXECUTOR_SERVICE.submit(priceService3::getPrice);
 
         Futures.addCallback(
                 Futures.allAsList(price1Future, price2Future, price3Future),
@@ -51,16 +52,14 @@ public class ListenableFutureExample {
                     public void onSuccess(List<Integer> result) {
                         double average = result.stream().mapToInt(value -> value).average().getAsDouble();
                         resultConsumer.accept(average);
-	                    executorService.shutdown();
                     }
 
                     @Override
                     public void onFailure(Throwable t) {
                         t.printStackTrace();
-	                    executorService.shutdown();
                     }
                 },
-                executorService
+                EXECUTOR_SERVICE
         );
     }
 
