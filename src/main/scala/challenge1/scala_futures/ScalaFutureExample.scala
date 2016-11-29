@@ -1,4 +1,4 @@
-package scala_futures
+package challenge1.scala_futures
 
 import externalLegacyCodeNotUnderOurControl.PriceService
 

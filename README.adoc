@@ -89,7 +89,7 @@ Credits go to https://github.com/christophsuter for his "concurrency notation".
 
 | Scala
 | Scala 1.12 API http://www.scala-lang.org/api/current/[scala-futures]
-| link:./src/main/scala/challenge1/scala_futures/ScalaFutureExample.scala[]
+| link:./src/main/scala/challenge1/challenge1/scala_futures/ScalaFutureExample.scala[]
 
 | Scala
 | http://doc.akka.io/docs/akka/2.4/scala/stream/index.html[akka-stream]
