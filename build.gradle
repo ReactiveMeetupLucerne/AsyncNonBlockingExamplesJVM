@@ -19,6 +19,7 @@ repositories {
 dependencies {
     compile "com.google.guava:guava:20.0"
     compile "io.reactivex:rxjava:1.2.2"
+    compile "io.reactivex:rxjava-math:1.0.0"
 
     testCompile "junit:junit:4.12"
     testCompile "com.jayway.awaitility:awaitility:1.7.0"
