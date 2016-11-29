@@ -24,5 +24,5 @@ object AkkaStreamExample extends App {
     .foreach(price => println(s"The average price is $price: " + Thread.currentThread().getName))
 
   TimeUnit.SECONDS.sleep(10)
-
+  system.terminate()
 }
