@@ -38,11 +38,11 @@ Rules
 
                           &&
 
-[avg price?] -> [PriceService1::getPrice] -> [println avg price]
+[avg price?] -> [PriceService2::getPrice] -> [println avg price]
 
                           &&
 
-                [PriceService1::getPrice]
+                [PriceService3::getPrice]
 
 
 ....
