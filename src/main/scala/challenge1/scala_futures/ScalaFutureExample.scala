@@ -1,26 +1,27 @@
 package challenge1.scala_futures
 
+import java.util.concurrent.TimeUnit
+
 import externalLegacyCodeNotUnderOurControl.PriceService
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
-import scala.concurrent.duration._
-import ExecutionContext.Implicits.global
 
 /**
   * Created by pascal.mengelt on 29.11.2016.
   */
 object ScalaFutureExample extends App {
 
-  val service = new PriceService()
+  val price1 = Future(new PriceService().getPrice)
+  val price2 = Future(new PriceService().getPrice)
+  val price3 = Future(new PriceService().getPrice)
 
-  val price1 = Future(service.getPrice)
-  val price2 = Future(service.getPrice)
-  val price3 = Future(service.getPrice)
-
-  Await.ready((for {
+  (for {
     a <- price1
     b <- price2
     c <- price3
   } yield (a + b + c) / 3)
-    .map(price => println(s"The average price is $price")), 10 seconds)
+    .foreach(price => println(s"The average price is $price: " + Thread.currentThread().getName))
+
+  TimeUnit.SECONDS.sleep(10)
 }

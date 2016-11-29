@@ -20,7 +20,7 @@ dependencies {
     compile "com.google.guava:guava:20.0"
     compile "io.reactivex:rxjava:1.2.2"
     compile "io.reactivex:rxjava-math:1.0.0"
-    compile "com.typesafe.akka:akka-actor:2.4.14"
+    compile "com.typesafe.akka:akka-stream_2.11:2.4.14"
 
     testCompile "junit:junit:4.12"
     testCompile "com.jayway.awaitility:awaitility:1.7.0"
