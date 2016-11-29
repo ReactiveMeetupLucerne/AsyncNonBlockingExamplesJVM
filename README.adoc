@@ -38,11 +38,11 @@ Rules
 
                           &&
 
-[avg price?] -> [PriceService1::getPrice] -> [println avg price]
+[avg price?] -> [PriceService2::getPrice] -> [println avg price]
 
                           &&
 
-                [PriceService1::getPrice]
+                [PriceService3::getPrice]
 
 
 ....
@@ -73,7 +73,7 @@ Credits go to https://github.com/christophsuter for his "concurrency notation".
 
 | Java
 | https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
-|
+| link:./src/main/java/challenge1/rxjava1/RxJavaObservableExample.java[]
 
 | Java
 | https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0[RxJava 2] Flowable

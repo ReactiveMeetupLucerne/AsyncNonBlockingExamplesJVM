@@ -21,6 +21,7 @@ dependencies {
     compile "io.reactivex:rxjava:1.2.2"
     compile "io.reactivex:rxjava-math:1.0.0"
     compile "com.typesafe.akka:akka-stream_2.11:2.4.14"
+    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
 
     testCompile "junit:junit:4.12"
     testCompile "com.jayway.awaitility:awaitility:1.7.0"
