@@ -77,7 +77,7 @@ Credits go to https://github.com/christophsuter for his "concurrency notation".
 
 | Java
 | https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0[RxJava 2] Flowable
-|
+| link:./src/main/java/challenge1/rxjava2/RxJava2Example.java[]
 
 | Java
 | https://github.com/reactor/reactor-core[reactor-core Flux]
