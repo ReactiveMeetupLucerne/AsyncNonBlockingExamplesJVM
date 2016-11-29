@@ -38,7 +38,7 @@ public class Java8StreamsExample {
      */
     private void run() {
         final OptionalDouble average = this.services.parallelStream()
-                .mapToDouble(PriceService::getPrice) // this call is executed in parallel
+                .mapToInt(PriceService::getPrice) // this call is executed in parallel
                 .average(); // this call blocks because it needs all answers from the price services to calculate
 
         println("The average price is: " + average.orElseGet(null));
