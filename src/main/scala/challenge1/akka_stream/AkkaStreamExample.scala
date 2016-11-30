@@ -10,18 +10,29 @@ import externalLegacyCodeNotUnderOurControl.PriceService
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
+/**
+  * Simple Akka Stream Example
+  * Created by pascal.mengelt on 29.11.2016.
+  */
 object AkkaStreamExample extends App {
 
   implicit val system = ActorSystem("QuickStart")
   implicit val materializer = ActorMaterializer()
-  val serviceCount = 3
+  val serviceCount = 20
+  val start = System.currentTimeMillis()
 
+  // create Price Services
   Source.fromIterator(() => (1 to serviceCount).iterator)
-    .mapAsync(3) { _ =>
-      Future(new PriceService().getPrice)
-    }.runFold(List[Double]())((a, b) => b :: a)
+      .map(_ => new PriceService())
+    // call services
+    .mapAsync(serviceCount) (s => Future(s.getPrice))
+    // collect the result
+    .runFold(List[Double]())((a, b) => b :: a)
+    // calc the average
     .map(_.sum / serviceCount)
-    .foreach(price => println(s"The average price is $price: " + Thread.currentThread().getName))
+    // print the result
+    .foreach(price =>
+      println(s"The average price is $price (${System.currentTimeMillis() - start} ms): " + Thread.currentThread().getName))
 
   TimeUnit.SECONDS.sleep(10)
   system.terminate()
