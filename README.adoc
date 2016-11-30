@@ -101,7 +101,7 @@ Credits go to https://github.com/christophsuter for his "concurrency notation".
 
 | Scala
 | http://doc.akka.io/docs/akka/2.4/scala/index-actors.html[akka (actors)]
-|
+| link:./src/main/scala/challenge1/akka_actor/AkkaActorExample.scala[]
 
 | Java
 | http://doc.akka.io/docs/akka/2.4/java/index-actors.html[akka (actors)]

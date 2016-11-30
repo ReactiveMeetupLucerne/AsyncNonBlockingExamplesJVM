@@ -29,6 +29,6 @@ object ScalaFutureMoreCallsExample extends App {
   average.foreach(price =>
     println(s"The average price is $price (${System.currentTimeMillis() - start} ms): " + Thread.currentThread().getName))
 
-  println("Didi not block!")
+  println("Did not block!")
   TimeUnit.SECONDS.sleep(10)
 }
