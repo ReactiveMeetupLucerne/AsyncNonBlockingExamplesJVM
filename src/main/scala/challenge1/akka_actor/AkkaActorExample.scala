@@ -13,6 +13,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.language.postfixOps
 /**
+  * Challenge 1: combining the results of "parallel" calls
+  *
   * Simple Akka Actor Example.
   * The fastest solution! Less than half the time!
   *

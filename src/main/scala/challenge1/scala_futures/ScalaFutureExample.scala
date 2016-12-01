@@ -8,6 +8,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 
 /**
+  * Challenge 1: combining the results of "parallel" calls
+  *
   * Simple example with fixed Services - using for comprehensions.
   * Created by pascal.mengelt on 29.11.2016.
   */

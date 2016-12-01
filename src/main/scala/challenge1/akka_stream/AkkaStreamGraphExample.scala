@@ -11,6 +11,8 @@ import externalLegacyCodeNotUnderOurControl.PriceService
 import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
+  * Challenge 1: combining the results of "parallel" calls
+  *
   * Example with a Graph. Interesting is that the Balancer does not automatically create Threads!
   * .async is needed - and even so only a few are created (way slower than the other solutions).
   * Created by pascal.mengelt on 29.11.2016.

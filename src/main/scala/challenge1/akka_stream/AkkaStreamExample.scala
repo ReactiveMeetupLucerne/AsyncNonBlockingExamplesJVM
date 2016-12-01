@@ -11,6 +11,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 /**
+  * Challenge 1: combining the results of "parallel" calls
+  *
   * Simple Akka Stream Example
   * Created by pascal.mengelt on 29.11.2016.
   */

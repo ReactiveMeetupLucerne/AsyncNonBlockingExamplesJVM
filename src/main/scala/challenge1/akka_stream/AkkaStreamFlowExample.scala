@@ -2,7 +2,6 @@ package challenge1.akka_stream
 
 import java.util.concurrent.TimeUnit
 
-import akka.NotUsed
 import akka.actor.ActorSystem
 import akka.stream._
 import akka.stream.scaladsl._
@@ -12,6 +11,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 /**
+  * Challenge 1: combining the results of "parallel" calls
+  *
   * Akka Stream Example that uses Flows/maps to decompose functionality.
   * See 'Clean Code: same level of abstraction'.
   * Created by pascal.mengelt on 01.12.2016.

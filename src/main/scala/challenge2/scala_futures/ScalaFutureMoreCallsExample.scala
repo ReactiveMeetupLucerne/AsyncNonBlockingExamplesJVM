@@ -1,4 +1,4 @@
-package challenge1.scala_futures
+package challenge2.scala_futures
 
 import java.util.concurrent.TimeUnit
 
@@ -6,9 +6,10 @@ import externalLegacyCodeNotUnderOurControl.PriceService
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
+import scala.util.Random
 
 /**
-  * Challenge 1: combining the results of "parallel" calls
+  * Challenge 2: fallback in case of timeout
   *
   * Version that uses a configurable number of services.
   * I used 20 to get some indication of speed.
@@ -20,17 +21,22 @@ object ScalaFutureMoreCallsExample extends App {
   val start = System.currentTimeMillis()
 
   // create the Services
-  val services = for (i <- 1 to serviceCount) yield new PriceService()
+  val services = for (i <- 1 to serviceCount) yield new PriceService(Random.nextInt() % 3)
   // call the services
-  val serviceCalls = services.map(s => Future(s.getPrice))
+  val serviceCalls = services.map(s => Future.firstCompletedOf(Seq(Future(s.getPrice),
+    Future {
+      TimeUnit.SECONDS.sleep(2)
+      println(s"[${ Thread.currentThread().getName}] The special price is 42")
+      42
+    })))
   // collect the results (from Seq[Future[Int]] to Future[Seq[Int]]
   val results = Future.fold(serviceCalls.toList)(List[Int]())((a: List[Int], b: Int) => b :: a)
   // calculate average
   val average = results.map(_.sum / serviceCount)
   // print result when finished
   average.foreach(price =>
-    println(s"The average price is $price (${System.currentTimeMillis() - start} ms): " + Thread.currentThread().getName))
+    println(s"[${ Thread.currentThread().getName}] The average price is $price (${System.currentTimeMillis() - start} ms)"))
 
   println("Did not block!")
-  TimeUnit.SECONDS.sleep(10)
+  TimeUnit.SECONDS.sleep(20)
 }

@@ -177,6 +177,11 @@ Don't forget to "cancel" the price service in case of timeouts.
 |
 
 | Scala
+| scala-futures
+| link:./src/main/scala/challenge1/challenge2/scala_futures/ScalaFutureExample.scala[]
+link:./src/main/scala/challenge1/challenge2/scala_futures/ScalaFutureMoreCallsExample.scala[]
+
+| Scala
 | http://doc.akka.io/docs/akka/2.4/scala/stream/index.html[akka-stream]
 |
 
