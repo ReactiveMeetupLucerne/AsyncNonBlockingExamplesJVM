@@ -27,7 +27,7 @@ object AkkaStreamExample extends App {
     // call services
     .mapAsync(serviceCount) (s => Future(s.getPrice))
     // collect the result
-    .runFold(List[Double]())((a, b) => b :: a)
+    .runWith(Sink.seq)
     // calc the average
     .map(_.sum / serviceCount)
     // print the result
