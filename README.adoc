@@ -191,7 +191,7 @@ link:./src/main/scala/challenge2/scala_futures/ScalaFutureMoreCallsExample.scala
 
 | Scala
 | http://doc.akka.io/docs/akka/2.4/scala/index-actors.html[akka (actors)]
-|
+| link:./src/main/scala/challenge1/akka_actor/AkkaActorExample.scala[]
 
 | Java
 | http://doc.akka.io/docs/akka/2.4/java/index-actors.html[akka (actors)]
