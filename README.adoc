@@ -1,6 +1,11 @@
 = Async non-blocking code examples for the JVM
 Reactive Meetup Lucerne https://www.meetup.com/de-DE/Luzern-reactive-concurrent-distributed-solutions-on-the-JVM/
 :imagesdir: ./docs
+:project-name: AsyncNonBlockingExamplesJVM
+:github-branch: master
+:github-user: ReactiveMeetupLucerne
+
+image:https://travis-ci.org/{github-user}/{project-name}.svg?branch={github-branch}["Build Status", link="https://travis-ci.org/{github-user}/{project-name}"]
 
 == Introduction
 
