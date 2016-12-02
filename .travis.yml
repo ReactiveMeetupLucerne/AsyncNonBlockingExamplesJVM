@@ -1,0 +1,12 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+before_install:
+# https://joerglenhard.wordpress.com/2013/10/01/using-travis-ci-with-gradle-wrapper
+ - chmod +x gradlew
+
+env:
+- TERM=dumb
+
