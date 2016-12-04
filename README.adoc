@@ -277,7 +277,7 @@ We have one observer which prints out every 10 seconds the min and the max tempe
 
 | Scala
 | http://doc.akka.io/docs/akka/2.4/scala/index-actors.html[akka (actors)]
-|
+| link:./src/main/scala/challenge3/akka_actor/AkkaActorExample.scala[]
 
 | Java
 | http://doc.akka.io/docs/akka/2.4/java/index-actors.html[akka (actors)]
