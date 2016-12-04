@@ -19,7 +19,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
   */
 object AkkaStreamGraphExample extends App {
 
-  implicit val system = ActorSystem("QuickStart")
+  implicit val system = ActorSystem("AkkaStreams")
   implicit val materializer = ActorMaterializer()
   val serviceCount = 20
   val start = System.currentTimeMillis()

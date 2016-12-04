@@ -65,14 +65,17 @@ object AkkaActorExample extends App {
                   println(s"[${Thread.currentThread().getName}] The special price is 42 ${exc.getMessage}")
                   Future(42)
               }
-              })(0)((a, b) => a + b)
-          .map(sum => requester ! Average(sum / serviceCount))
+              })(List[Int]())((a, b) => b::a)
+          .map { prices =>
+            println(s"called service: ${prices.size} > $prices")
+            requester ! Average(prices.sum / serviceCount)
+          }
     }
   }
 
   // the worker gets the price from the PriceService
   class ServiceWorker extends Actor {
-    val service = new PriceService(Random.nextInt() % 5)
+    val service = new PriceService(Random.nextInt(100) % 4)
 
     def receive: PartialFunction[Any, Unit] = {
       case GetPrice =>

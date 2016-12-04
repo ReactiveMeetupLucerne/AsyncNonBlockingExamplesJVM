@@ -18,7 +18,7 @@ import scala.concurrent.Future
   */
 object AkkaStreamExample extends App {
 
-  implicit val system = ActorSystem("QuickStart")
+  implicit val system = ActorSystem("AkkaStreams")
   implicit val materializer = ActorMaterializer()
   val serviceCount = 20
   val start = System.currentTimeMillis()
@@ -27,7 +27,7 @@ object AkkaStreamExample extends App {
   Source.fromIterator(() => (1 to serviceCount).iterator)
       .map(_ => new PriceService())
     // call services
-    .mapAsync(serviceCount) (s => Future(s.getPrice))
+    .mapAsyncUnordered(serviceCount) (s => Future(s.getPrice))
     // collect the result
     .runWith(Sink.seq)
     // calc the average

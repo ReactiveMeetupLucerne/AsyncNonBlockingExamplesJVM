@@ -32,10 +32,13 @@ object ScalaFutureExample extends App {
 
   TimeUnit.SECONDS.sleep(10)
 
-  private def runService(waitFor: Int): Future[Int] = Future.firstCompletedOf(Seq(Future(new PriceService(waitFor).getPrice),
-    Future {
-      TimeUnit.SECONDS.sleep(2)
-      println(s"[${Thread.currentThread().getName}] The special price is 42")
-      42
-    }))
+  // changed creation the Price Service
+  private def runService(waitFor: Int): Future[Int] =
+    Future.firstCompletedOf(Seq(
+      Future(new PriceService(waitFor).getPrice)
+      , Future {
+        TimeUnit.SECONDS.sleep(2)
+        println(s"[${Thread.currentThread().getName}] The special price is 42")
+        42
+      }))
 }
