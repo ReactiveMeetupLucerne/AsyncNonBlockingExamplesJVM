@@ -188,7 +188,8 @@ link:./src/main/scala/challenge2/scala_futures/ScalaFutureMoreCallsExample.scala
 
 | Scala
 | http://doc.akka.io/docs/akka/2.4/scala/stream/index.html[akka-stream]
-|
+| link:./src/main/scala/challenge2/akka_stream/AkkaStreamExample.scala[]
+| link:./src/main/scala/challenge2/akka_stream/AkkaMultiStreamExample.scala[]
 
 | Java
 | http://doc.akka.io/docs/akka/2.4/java/stream/index.html[akka-stream]

@@ -1,6 +1,6 @@
 package challenge2.akka_stream
 
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.{TimeUnit, TimeoutException}
 
 import akka.NotUsed
 import akka.actor.ActorSystem
@@ -10,9 +10,9 @@ import externalLegacyCodeNotUnderOurControl.PriceService
 
 import scala.collection.immutable.Seq
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.{Future, TimeoutException}
-import scala.util.Random
+import scala.concurrent.Future
 import scala.concurrent.duration._
+import scala.util.Random
 
 /**
   * Challenge 2: fallback in case of timeout
@@ -50,7 +50,7 @@ object AkkaMultiStreamExample extends App {
     .completionTimeout(2 seconds)
     .recoverWithRetries(-1, {
       // handle TimeoutException
-      case ex: Exception =>
+      case _: TimeoutException =>
         println(s"[${Thread.currentThread().getName}] The special price is 42")
         Source.single(42)
     })

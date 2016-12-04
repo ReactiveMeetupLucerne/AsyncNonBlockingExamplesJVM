@@ -56,16 +56,17 @@ object AkkaActorExample extends App {
         // delegate the work to the workers
         Future.fold(
           serviceWorkers
-            .map{_.ask(GetPrice)(Timeout(2 seconds))
-              .mapTo[Price]
-              .map(_.amount)
-              .recoverWith {
-                //handle timeout exception
-                case exc =>
-                  println(s"[${Thread.currentThread().getName}] The special price is 42 ${exc.getMessage}")
-                  Future(42)
-              }
-              })(List[Int]())((a, b) => b::a)
+            .map {
+              _.ask(GetPrice)(Timeout(2 seconds))
+                .mapTo[Price]
+                .map(_.amount)
+                .recoverWith {
+                  //handle timeout exception
+                  case exc =>
+                    println(s"[${Thread.currentThread().getName}] The special price is 42 ${exc.getMessage}")
+                    Future(42)
+                }
+            })(List[Int]())((a, b) => b :: a)
           .map { prices =>
             println(s"called service: ${prices.size} > $prices")
             requester ! Average(prices.sum / serviceCount)
