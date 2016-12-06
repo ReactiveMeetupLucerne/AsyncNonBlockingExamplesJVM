@@ -21,7 +21,7 @@ object ScalaFutureMoreCallsExample extends App {
   val start = System.currentTimeMillis()
 
   // create the Services
-  val services = for (i <- 1 to serviceCount) yield new PriceService(Random.nextInt(100) % 4)
+  val services = for (i <- 1 to serviceCount) yield new PriceService(Random.nextInt(4))
   // call the services with Timeout
   val serviceCalls = services.map(s =>
     Future.firstCompletedOf(Seq(

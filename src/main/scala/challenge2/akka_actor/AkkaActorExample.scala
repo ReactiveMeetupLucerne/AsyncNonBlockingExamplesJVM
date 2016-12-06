@@ -76,7 +76,7 @@ object AkkaActorExample extends App {
 
   // the worker gets the price from the PriceService
   class ServiceWorker extends Actor {
-    val service = new PriceService(Random.nextInt(100) % 4)
+    val service = new PriceService(Random.nextInt(4))
 
     def receive: PartialFunction[Any, Unit] = {
       case GetPrice =>

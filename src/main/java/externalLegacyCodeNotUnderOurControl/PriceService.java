@@ -21,7 +21,7 @@ public class PriceService {
     }
 
     public int getPrice() {
-        println("Calculating price..."+ delay_seconds);
+        println("Calculating price delayed by "+ delay_seconds+ " s");
         try {
             TimeUnit.SECONDS.sleep(delay_seconds);
         } catch (InterruptedException e) {

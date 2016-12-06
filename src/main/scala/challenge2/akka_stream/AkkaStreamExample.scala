@@ -41,7 +41,7 @@ object AkkaStreamExample extends App {
   private lazy val source = Source.fromIterator(() => (1 to serviceCount).iterator)
   // Flows
   // changed PriceService creation with Random delay
-  private lazy val createPriceServices = Flow[Int].map(_ => new PriceService(Random.nextInt(100) % 3))
+  private lazy val createPriceServices = Flow[Int].map(_ => new PriceService(Random.nextInt(3)))
   // changed with adding a Timeout
   private lazy val getPrices =
     Flow[PriceService]

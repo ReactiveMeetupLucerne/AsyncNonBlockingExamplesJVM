@@ -41,7 +41,7 @@ object AkkaMultiStreamExample extends App {
 
   // implementation of each step
   // Each Service is a Source
-  private lazy val sources = for (_ <- 1 to serviceCount) yield Source.single(new PriceService(Random.nextInt(100) % 3))
+  private lazy val sources = for (_ <- 1 to serviceCount) yield Source.single(new PriceService(Random.nextInt(3)))
   // Flows
   // changed with adding a Timeout
   private lazy val getPrices: Flow[PriceService, Int, NotUsed] =

@@ -358,7 +358,7 @@ of just sharing the results we share the ongoing calculation of a result.
 
 | Scala
 | http://doc.akka.io/docs/akka/2.4/scala/index-actors.html[akka (actors)]
-|
+| link:./src/main/scala/challenge4/akka_actor/AkkaActorExample.scala[]
 
 | Java
 | http://doc.akka.io/docs/akka/2.4/java/index-actors.html[akka (actors)]
