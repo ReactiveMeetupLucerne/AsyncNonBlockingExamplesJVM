@@ -13,7 +13,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -31,7 +31,6 @@ dependencies {
 
     testCompile "junit:junit:4.12"
     testCompile "com.jayway.awaitility:awaitility:1.7.0"
-    testCompile 'org.springframework:spring-test:4.3.4.RELEASE'
 }
 
 test {
