@@ -211,6 +211,11 @@ link:./src/main/scala/challenge2/akka_stream/AkkaMultiStreamExample.scala[]
 | https://github.com/aol/cyclops-react[cyclops-react] (https://blog.jooq.org/2016/05/12/cyclops-react-organises-the-cambrian-explosion-of-java-8-libraries[Intro])
 |
 
+| Java
+| http://camel.apache.org/[Apache Camel]
+| link:./src/main/java/challenge2/camel/Challenge2.java[]
+link:./src/main/java/challenge2/camel/Challenge2RouteBuilder.java[]
+
 | ...
 | ...
 |
@@ -290,6 +295,11 @@ We have one observer which prints out every 10 seconds the min and the max tempe
 | Java
 | https://github.com/aol/cyclops-react[cyclops-react] (https://blog.jooq.org/2016/05/12/cyclops-react-organises-the-cambrian-explosion-of-java-8-libraries[Intro])
 |
+
+| Java
+| http://camel.apache.org/[Apache Camel]
+| link:./src/main/java/challenge3/camel/Challenge3.java[]
+link:./src/main/java/challenge3/camel/Challenge3RouteBuilder.java[]
 
 | ...
 | ...
@@ -371,6 +381,11 @@ of just sharing the results we share the ongoing calculation of a result.
 | Java
 | https://github.com/aol/cyclops-react[cyclops-react] (https://blog.jooq.org/2016/05/12/cyclops-react-organises-the-cambrian-explosion-of-java-8-libraries[Intro])
 |
+
+| Java
+| http://camel.apache.org/[Apache Camel]
+| link:./src/main/java/challenge4/camel/Challenge4.java[]
+link:./src/main/java/challenge4/camel/Challenge4RouteBuilder.java[]
 
 | ...
 | ...
