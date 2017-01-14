@@ -20,10 +20,10 @@ public class TemperatureValueSource {
                 1,
                 new ThreadFactoryBuilder().setDaemon(true).setNameFormat("source-%d").build()
         );
-        executorService.schedule(() -> {
+        executorService.scheduleAtFixedRate(() -> {
             int nextTemperature = ThreadLocalRandom.current().nextInt(20, 25);
             listenerList.forEach(listener -> listener.onNext(nextTemperature));
-        }, 2, TimeUnit.SECONDS);
+        }, 2, 2, TimeUnit.SECONDS);
     }
 
     public void addListener(TemperatureListener listener) {

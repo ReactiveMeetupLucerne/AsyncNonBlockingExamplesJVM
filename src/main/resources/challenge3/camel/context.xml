@@ -12,6 +12,10 @@ http://camel.apache.org/schema/spring/camel-spring.xsd">
         <camel:routeBuilder ref="routeBuilder"/>
     </camel:camelContext>
 
-    <bean id="routeBuilder" class="challenge3.camel.Challenge3RouteBuilder"/>
+    <bean id="temperatureValueSource" class="externalLegacyCodeNotUnderOurControl.TemperatureValueSource"/>
+
+    <bean id="routeBuilder" class="challenge3.camel.Challenge3RouteBuilder">
+        <property name="temperatureValueSource" ref="temperatureValueSource"/>
+    </bean>
 
 </beans>
