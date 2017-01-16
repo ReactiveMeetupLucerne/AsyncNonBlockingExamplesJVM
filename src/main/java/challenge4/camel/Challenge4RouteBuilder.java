@@ -40,7 +40,7 @@ public class Challenge4RouteBuilder extends RouteBuilder {
                     this.latch.get().await();
                 })
                 .choice()
-                    .when(exchange -> (System.currentTimeMillis() - this.lastTimestamp > 5))
+                    .when(exchange -> (System.currentTimeMillis() - this.lastTimestamp > 50_000))
                         .process(exchange -> {
                             log.debug("Last calculation too old, re-calculate");
                         })
