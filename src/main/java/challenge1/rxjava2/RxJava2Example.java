@@ -36,7 +36,7 @@ public class RxJava2Example {
         this.count = new AtomicInteger(0);
         this.services = new HashSet<>();
         for (int i = 0; i < NUMBER_OF_SERVICE_CALLS; i++) {
-            this.services.add(new PriceService());
+            this.services.add(new PriceService(10 - i));
         }
     }
 
