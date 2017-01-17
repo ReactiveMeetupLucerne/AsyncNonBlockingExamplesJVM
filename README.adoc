@@ -348,7 +348,7 @@ of just sharing the results we share the ongoing calculation of a result.
 
 | Java
 | https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0[RxJava 2] Flowable
-|
+|link:./src/main/java/challenge4/rxjava2/CollapsingWIthRxJava2Example.java[]
 
 | Java
 | https://github.com/reactor/reactor-core[reactor-core Flux]
