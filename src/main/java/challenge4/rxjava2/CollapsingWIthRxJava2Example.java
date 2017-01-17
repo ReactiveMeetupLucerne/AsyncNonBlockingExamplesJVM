@@ -46,7 +46,7 @@ public class CollapsingWIthRxJava2Example {
 
         final Flowable<Integer> priceCall = Flowable.fromCallable(priceService::getPrice);
 
-        Flowable<Integer> calls = Flowable.range(1,10);
+        final Flowable<Integer> calls = Flowable.range(1,10);
 
         Flowable.combineLatest(priceCall, calls, (price, ignored) -> price).subscribe(this::collector);
 
