@@ -44,15 +44,15 @@ public class RxJava2Example {
      */
     private void run() {
         Flowable.fromIterable(services)
-                .flatMap((priceService -> Flowable.fromCallable(priceService::getPrice)
-                        .subscribeOn(Schedulers.io())))
+                .flatMap(priceService -> Flowable.fromCallable(priceService::getPrice)
+                        .subscribeOn(Schedulers.io()))
                 .subscribe(this::collector);
     }
 
     /**
      * Collect the answers and calculate the average price.
      */
-    private synchronized void collector(final int price) {
+    private void collector(final int price) {
         this.price += price;
         if (++this.count == NUMBER_OF_SERVICE_CALLS) {
             println("The average price is: " + this.price / this.count);
