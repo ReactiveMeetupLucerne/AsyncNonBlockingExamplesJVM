@@ -6,9 +6,11 @@ import io.reactivex.schedulers.Schedulers;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static externalLegacyCodeNotUnderOurControl.PrintlnWithThreadname.println;
-import static java.lang.Thread.sleep;
 
 /**
  * This example uses RxJava2.
@@ -20,23 +22,26 @@ public class RxJava2Example {
 
     private static final int NUMBER_OF_SERVICE_CALLS = 10;
 
+    private final ExecutorService executorService;
     private final Set<PriceService> services;
-    private int price = 0;
-    private int count = 0;
-
-    public static void main(final String... args) throws InterruptedException {
-        new RxJava2Example().run();
-        sleep(10_000);
-    }
+    private final AtomicInteger price;
+    private final AtomicInteger count;
 
     /**
      * Create the price services.
      */
     private RxJava2Example() {
+        this.executorService = Executors.newCachedThreadPool();
+        this.price = new AtomicInteger(0);
+        this.count = new AtomicInteger(0);
         this.services = new HashSet<>();
         for (int i = 0; i < NUMBER_OF_SERVICE_CALLS; i++) {
             this.services.add(new PriceService());
         }
+    }
+
+    public static void main(final String... args) throws InterruptedException {
+        new RxJava2Example().run();
     }
 
     /**
@@ -45,18 +50,18 @@ public class RxJava2Example {
     private void run() {
         Flowable.fromIterable(services)
                 .flatMap(priceService -> Flowable.fromCallable(priceService::getPrice)
-                        .subscribeOn(Schedulers.io()))
+                        .subscribeOn(Schedulers.from(this.executorService)))
                 .subscribe(this::collector);
+        this.executorService.shutdown();
     }
 
     /**
      * Collect the answers and calculate the average price.
      */
     private void collector(final int price) {
-        this.price += price;
-        if (++this.count == NUMBER_OF_SERVICE_CALLS) {
-            println("The average price is: " + this.price / this.count);
-            System.exit(0);
+        this.price.addAndGet(price);
+        if (this.count.incrementAndGet() == NUMBER_OF_SERVICE_CALLS) {
+            println("The average price is: " + this.price.get() / this.count.get());
         }
     }
 
