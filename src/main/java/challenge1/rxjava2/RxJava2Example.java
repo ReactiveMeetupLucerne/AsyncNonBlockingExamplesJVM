@@ -26,25 +26,25 @@ public class RxJava2Example {
     private int price = 0;
     private int count = 0;
 
-    public static void main(final String... args) throws InterruptedException {
-        new RxJava2Example().run();
-    }
-
     /**
      * Create the price services.
      */
     private RxJava2Example() {
+        this.executorService = Executors.newCachedThreadPool();
         this.services = new HashSet<>();
         for (int i = 0; i < NUMBER_OF_SERVICE_CALLS; i++) {
             this.services.add(new PriceService());
         }
     }
 
+    public static void main(final String... args) throws InterruptedException {
+        new RxJava2Example().run();
+    }
+
     /**
      * Use RxJava2 to call the price services.
      */
     private void run() {
-        this.executorService = Executors.newCachedThreadPool();
         Flowable.fromIterable(services)
                 .flatMap(priceService -> Flowable.fromCallable(priceService::getPrice)
                         .subscribeOn(Schedulers.from(this.executorService)))
