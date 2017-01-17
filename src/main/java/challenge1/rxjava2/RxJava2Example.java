@@ -6,9 +6,10 @@ import io.reactivex.schedulers.Schedulers;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static externalLegacyCodeNotUnderOurControl.PrintlnWithThreadname.println;
-import static java.lang.Thread.sleep;
 
 /**
  * This example uses RxJava2.
@@ -20,13 +21,13 @@ public class RxJava2Example {
 
     private static final int NUMBER_OF_SERVICE_CALLS = 10;
 
+    private ExecutorService executorService;
     private final Set<PriceService> services;
     private int price = 0;
     private int count = 0;
 
     public static void main(final String... args) throws InterruptedException {
         new RxJava2Example().run();
-        sleep(10_000);
     }
 
     /**
@@ -43,10 +44,12 @@ public class RxJava2Example {
      * Use RxJava2 to call the price services.
      */
     private void run() {
+        this.executorService = Executors.newCachedThreadPool();
         Flowable.fromIterable(services)
                 .flatMap(priceService -> Flowable.fromCallable(priceService::getPrice)
-                        .subscribeOn(Schedulers.io()))
+                        .subscribeOn(Schedulers.from(this.executorService)))
                 .subscribe(this::collector);
+        this.executorService.shutdown();
     }
 
     /**
@@ -56,7 +59,6 @@ public class RxJava2Example {
         this.price += price;
         if (++this.count == NUMBER_OF_SERVICE_CALLS) {
             println("The average price is: " + this.price / this.count);
-            System.exit(0);
         }
     }
 
