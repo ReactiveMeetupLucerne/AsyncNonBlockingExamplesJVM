@@ -17,8 +17,8 @@ import static java.lang.Thread.sleep;
 /**
  * This example uses RxJava2.
  *
- * @author Andy Nyffenegger
- * @author Marcus Fihlon, www.fihlon.ch
+ * @author Jarek Ratajski :-)
+ *
  */
 public class CollapsingWIthRxJava2Example {
 
