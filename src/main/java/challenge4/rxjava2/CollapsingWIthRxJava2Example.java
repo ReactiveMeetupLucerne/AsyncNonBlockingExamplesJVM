@@ -17,16 +17,11 @@ import static java.lang.Thread.sleep;
 /**
  * This example uses RxJava2.
  *
- * @author Jarek Ratajski :-)
+ * @author Jarek Ratajski
  *
  */
 public class CollapsingWIthRxJava2Example {
 
-    private static final int NUMBER_OF_SERVICE_CALLS = 10;
-
-
-    private int price = 0;
-    private int count = 0;
 
     public static void main(final String... args) throws InterruptedException {
         new CollapsingWIthRxJava2Example().run();
@@ -51,9 +46,7 @@ public class CollapsingWIthRxJava2Example {
 
         final Flowable<Integer> priceCall = Flowable.fromCallable(priceService::getPrice);
 
-        final List<Integer> callsList = Arrays.asList(1, 2, 3, 4);
-
-        Flowable<Integer> calls = Flowable.fromIterable(callsList);
+        Flowable<Integer> calls = Flowable.range(1,10);
 
         Flowable.combineLatest(priceCall, calls, (price, ignored) -> price).subscribe(this::collector);
 
