@@ -14,7 +14,3 @@ cache:
     - '$HOME/.gradle/caches'
     - '$HOME/.gradle/wrapper'
     - '$HOME/.m2/repository'
-
-env:
-- TERM=dumb
-
