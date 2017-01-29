@@ -71,6 +71,7 @@ Credits go to https://github.com/christophsuter for his "concurrency notation".
 | Java
 | https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html[CompletableFuture (JDK 8)]
 | link:./src/main/java/challenge1/java8/CompletableFutureExample.java[]
+link:./src/main/java/challenge1/java8/GmoCompletableFutureDemo.java[]
 
 | Java
 | http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html[Parallel Streams (JDK 8)]
@@ -163,7 +164,7 @@ Don't forget to "cancel" the price service in case of timeouts.
 
 | Java
 | https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html[CompletableFuture (JDK 8)]
-|
+| link:./src/main/java/challenge2/java8/GmoCompletableFutureDemo.java[]
 
 | Java
 | https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
@@ -254,7 +255,7 @@ We have one observer which prints out every 10 seconds the min and the max tempe
 
 | Java
 | https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html[CompletableFuture (JDK 8)]
-|
+| link:./src/main/java/challenge3/java8/GmoCompletableFutureDemo.java[]
 
 | Java
 | https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
@@ -340,7 +341,7 @@ of just sharing the results we share the ongoing calculation of a result.
 
 | Java
 | https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html[CompletableFuture (JDK 8)]
-|
+| link:./src/main/java/challenge4/java8/GmoCompletableFutureDemo.java[]
 
 | Java
 | https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
