@@ -56,14 +56,14 @@ public class GmoCompletableFutureDemo {
 	
 	private void run()
 	{
-		supplyOrCollapse("getprice").thenAccept(price -> { System.out.println("Price (requested after 0 seconds): "+price);	});
-		try { Thread.sleep(1*1000);	} catch (InterruptedException e) { }
-		supplyOrCollapse("getprice").thenAccept(price -> { System.out.println("Price (requested after 1 second):  "+price);	});
-		try { Thread.sleep(3*1000);	} catch (InterruptedException e) { }
-		supplyOrCollapse("getprice").thenAccept(price -> { System.out.println("Price (requested after 4 seconds): "+price);	});
-		try { Thread.sleep(1*1000);	} catch (InterruptedException e) { }
-		supplyOrCollapse("getprice").thenAccept(price -> { System.out.println("Price (requested after 5 seconds): "+price);	});
-		supplyOrCollapse("getprice").thenAccept(price -> { System.out.println("Price (requested after 5 seconds): "+price);	});
+		supplyOrCollapse("getprice").thenAccept(price -> { System.out.println("Price (requested after 0 seconds): "+price); });
+		try { Thread.sleep(1*1000); } catch (InterruptedException e) { }
+		supplyOrCollapse("getprice").thenAccept(price -> { System.out.println("Price (requested after 1 second):  "+price); });
+		try { Thread.sleep(3*1000); } catch (InterruptedException e) { }
+		supplyOrCollapse("getprice").thenAccept(price -> { System.out.println("Price (requested after 4 seconds): "+price); });
+		try { Thread.sleep(1*1000); } catch (InterruptedException e) { }
+		supplyOrCollapse("getprice").thenAccept(price -> { System.out.println("Price (requested after 5 seconds): "+price); });
+		supplyOrCollapse("getprice").thenAccept(price -> { System.out.println("Price (requested after 5 seconds): "+price); });
 		supplyOrCollapse("dummy").thenAccept(price -> { System.out.println("Dummy: "+price); });
 	}
 	
