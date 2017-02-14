@@ -1,0 +1,41 @@
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Supplier;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import externalLegacyCodeNotUnderOurControl.PriceService;
+
+public class GmoCompletableFutureDemo {
+
+	private PriceService service = new PriceService(5);
+
+	private void run() {
+		ExecutorService executor = Executors.newFixedThreadPool(1);
+		
+		Supplier<Integer> sup_getprice = () -> {
+			return service.getPrice();
+		};
+
+		CompletableFuture.supplyAsync(sup_getprice, executor)
+			.completeOnTimeout(42, 2, TimeUnit.SECONDS)
+			.thenAccept(amount -> {
+				System.out.println("Price with timeout is: "+amount);
+				executor.shutdownNow(); //send interrupt to PriceService, if it is still running
+			});
+		
+		try {
+			System.out.println("Main thread waiting for completion.");
+			Thread.sleep(10*1000);
+			System.out.println("Main thread done.");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		new GmoCompletableFutureDemo().run();
+	}
+
+}
