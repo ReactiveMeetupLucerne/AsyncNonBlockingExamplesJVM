@@ -35,9 +35,7 @@ public class GmoCompletableFutureDemo
 		tvsource.addListener(tvo);
 
 		ScheduledExecutorService ses = Executors.newScheduledThreadPool(1);
-		ses.scheduleAtFixedRate(() -> {
-			tvo.printStatus();
-		}, 10, 10, TimeUnit.SECONDS);
+		ses.scheduleAtFixedRate(() -> tvo.printStatus(), 10, 10, TimeUnit.SECONDS);
 	        
 		System.out.println("Main thread done.");
 	}
