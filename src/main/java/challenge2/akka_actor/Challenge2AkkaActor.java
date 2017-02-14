@@ -45,7 +45,7 @@ public class Challenge2AkkaActor {
             receive(ReceiveBuilder
                     .matchEquals("calc", s -> {
                         origin = sender();
-                        getContext().setReceiveTimeout(Duration.create("3000 milliseconds"));
+                        getContext().setReceiveTimeout(Duration.create("300 milliseconds"));
                         service.tell("calc", self());
                     }).match(Integer.class, i -> {
                         origin.tell(i, self());
