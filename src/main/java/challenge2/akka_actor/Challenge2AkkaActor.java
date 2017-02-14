@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class Challenge2AkkaActor {
 
     public static class PriceServiceActor extends AbstractActor {
-        private PriceService service = new PriceService();
+        private PriceService service = new PriceService(5);
 
         public PriceServiceActor() {
             receive(ReceiveBuilder
@@ -45,12 +45,13 @@ public class Challenge2AkkaActor {
             receive(ReceiveBuilder
                     .matchEquals("calc", s -> {
                         origin = sender();
-                        getContext().setReceiveTimeout(Duration.create("300 milliseconds"));
+                        getContext().setReceiveTimeout(Duration.create("2 seconds"));
                         service.tell("calc", self());
                     }).match(Integer.class, i -> {
                         origin.tell(i, self());
                     }).match(ReceiveTimeout.class, i -> {
                         origin.tell(42, self());
+                        // TODO: stop other actor
                     })
                     .build()
             );
