@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 public class GmoCompletableFutureDemoJava9 {
-    /***** JAVA9 Code disabled, in order not to break build.
 
 
     private PriceService service = new PriceService(5);
@@ -24,8 +23,8 @@ public class GmoCompletableFutureDemoJava9 {
                 .completeOnTimeout(42, 2, TimeUnit.SECONDS)
                 .thenAccept(amount -> {
                     System.out.println("Price with timeout is: " + amount);
-                    integerCompletableFuture.cancel(true);
                     // TODO: do not shutdown whole executor, but only the  CompletableFuture
+                    // => Is there a better solution?
                     executor.shutdownNow(); //send interrupt to PriceService, if it is still running
                 });
 
@@ -43,5 +42,4 @@ public class GmoCompletableFutureDemoJava9 {
         new GmoCompletableFutureDemoJava9().run();
     }
 
-     */
 }
