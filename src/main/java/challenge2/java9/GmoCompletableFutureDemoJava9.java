@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 public class GmoCompletableFutureDemoJava9 {
+    /***** JAVA9 Code disabled, in order not to break build.
 
 
     private PriceService service = new PriceService(5);
@@ -42,4 +43,5 @@ public class GmoCompletableFutureDemoJava9 {
         new GmoCompletableFutureDemoJava9().run();
     }
 
+     */
 }
