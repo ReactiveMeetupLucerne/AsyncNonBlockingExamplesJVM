@@ -22,7 +22,7 @@ public class GmoCompletableFutureDemo {
 			.completeOnTimeout(42, 2, TimeUnit.SECONDS)
 			.thenAccept(amount -> {
 				System.out.println("Price with timeout is: "+amount);
-				executor.shutdownNow(); //Hack: send interrupt to PriceService, if it is still running. => Is there a better solution?
+				executor.shutdownNow(); //HACK: send interrupt to PriceService, if it is still running. => Is there a better solution?
 			});
 		
 		try {
