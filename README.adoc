@@ -165,6 +165,7 @@ Don't forget to "cancel" the price service in case of timeouts.
 | Java
 | https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html[CompletableFuture (JDK 8)]
 | link:./src/main/java/challenge2/java8/GmoCompletableFutureDemo.java[]
+link:./src/main/java/challenge2/java8/GmoCompletableFutureDemo2.java[]
 
 | Java
 | https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
@@ -180,7 +181,7 @@ Don't forget to "cancel" the price service in case of timeouts.
 
 | Java
 | JDK 9 API http://jsr166-concurrency.10961.n7.nabble.com/jdk9-Candidate-classes-Flow-and-SubmissionPublisher-td11967.html[Flow / SubmissionPublisher] (http://g.oswego.edu/dl/concurrency-interest[jsr166-4jdk8])
-|
+| link:./src/main/java/challenge2/java9/GmoCompletableFutureDemoJava9.java[] 
 
 | Scala
 | scala-futures
