@@ -18,9 +18,11 @@ public class Challenge3RxJava2Example {
             TemperatureValueSource.TemperatureListener temperatureListener = emitter::onNext;
             temperatureValueSource.addListener(temperatureListener);
             emitter.setCancellable(() -> temperatureValueSource.removeListener(temperatureListener));
-        }).doOnNext(tempValue -> println(tempValue + "°Celsius from temperature source"));
+        });
 
-        Observable<Pair<Integer, Integer>> minMaxValuesWithinWindow = temperatureValues.window(10, TimeUnit.SECONDS, Schedulers.computation())
+        Observable<Pair<Integer, Integer>> minMaxValuesWithinWindow = temperatureValues
+                .doOnNext(tempValue -> println(tempValue + "°Celsius from temperature source"))
+                .window(10, TimeUnit.SECONDS, Schedulers.computation())
                 .flatMap(temperatureValuesWithinWindow ->
                         temperatureValuesWithinWindow.reduce(
                                 Pair.of(Integer.MAX_VALUE, Integer.MIN_VALUE),
@@ -38,7 +40,11 @@ public class Challenge3RxJava2Example {
                         ).toObservable()
                 );
 
-        minMaxValuesWithinWindow.subscribe(minMaxPair -> println("Within window: Min=" + minMaxPair.getLeft() + "°Celsius, Max=" + minMaxPair.getRight() + "°Celsius. Calculated async and non-blocking TM :-)"));
+        minMaxValuesWithinWindow.subscribe(minMaxPair ->
+                println("Within window: Min=" + minMaxPair.getLeft() + "°Celsius, "
+                        + "Max=" + minMaxPair.getRight() + "°Celsius. "
+                        + "Calculated async and non-blocking TM :-)")
+        );
 
         println("I wasn't blocked");
 
