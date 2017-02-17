@@ -265,7 +265,7 @@ We have one observer which prints out every 10 seconds the min and the max tempe
 | Java
 | https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0[RxJava 2] Flowable / Observable
 | link:./src/main/java/challenge3/rxjava2/Challenge3RxJava2Example.java[]
-link:./src/main/java/challenge3/rxjava2/Challenge3RxJava2ExampleWithThrotteling[]
+link:./src/main/java/challenge3/rxjava2/Challenge3RxJava2ExampleWithThrotteling.java[]
 
 | Java
 | https://github.com/reactor/reactor-core[reactor-core Flux]
