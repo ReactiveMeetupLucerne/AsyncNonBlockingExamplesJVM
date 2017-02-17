@@ -346,7 +346,7 @@ of just sharing the results we share the ongoing calculation of a result.
 | link:./src/main/java/challenge4/java8/GmoCompletableFutureDemo.java[]
 
 | Java
-| https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
+| https://github.com/ReactiveX/RxJava[RxJava 1] Single / Observable
 | link:./src/main/java/challenge4/rxjava1/RequestCollapsingWithShareOperatorAndAtomicReference.java[]
 
 | Java
