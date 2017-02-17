@@ -9,12 +9,13 @@ import java.util.concurrent.TimeUnit;
 
 import static externalLegacyCodeNotUnderOurControl.PrintlnWithThreadname.println;
 
+// https://github.com/ReactiveMeetupLucerne/AsyncNonBlockingExamplesJVM/issues/9
 public class Challenge3RxJava2Example {
 
     public static void main(String[] args) throws InterruptedException {
         TemperatureValueSource temperatureValueSource = new TemperatureValueSource();
 
-        Observable<Integer> temperatureValues = Observable.<Integer>create(emitter -> {
+        Observable<Integer> temperatureValues = Observable.create(emitter -> {
             TemperatureValueSource.TemperatureListener temperatureListener = emitter::onNext;
             temperatureValueSource.addListener(temperatureListener);
             emitter.setCancellable(() -> temperatureValueSource.removeListener(temperatureListener));
