@@ -248,7 +248,7 @@ We have one observer which prints out every 10 seconds the min and the max tempe
 
 | Java
 | https://docs.oracle.com/javase/tutorial/essential/concurrency/exinter.html[ExecutorService and Futures (JDK 5)]
-|
+| link:./src/main/java/challenge3/java5/Challenge3Java5Example.java[]
 
 | Java
 | Google Guava https://github.com/google/guava/wiki/ListenableFutureExplained[ListenableFuture]
@@ -256,7 +256,7 @@ We have one observer which prints out every 10 seconds the min and the max tempe
 
 | Java
 | https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html[CompletableFuture (JDK 8)]
-| link:./src/main/java/challenge3/java8/GmoCompletableFutureDemo.java[]
+|
 
 | Java
 | https://github.com/ReactiveX/RxJava[RxJava 1] http://reactivex.io/documentation/observable.html[Observable]
