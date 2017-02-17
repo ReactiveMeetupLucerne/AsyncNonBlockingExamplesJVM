@@ -28,7 +28,7 @@ public class PriceService {
             println("The price is " + result);
             return result;
         } catch (InterruptedException e) {
-            System.out.println("Interrupted.");
+            println("PriceService#getPrice() was interrupted.");
             Thread.currentThread().interrupt();
             return -1;
         }
