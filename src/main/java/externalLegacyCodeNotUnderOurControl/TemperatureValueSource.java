@@ -13,12 +13,13 @@ public class TemperatureValueSource {
 
     private final List<TemperatureListener> listenerList = Lists.newCopyOnWriteArrayList();
 
-    private final ScheduledExecutorService executorService;
-
     public TemperatureValueSource() {
-        executorService = Executors.newScheduledThreadPool(
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(
                 1,
-                new ThreadFactoryBuilder().setDaemon(true).setNameFormat("source-%d").build()
+                new ThreadFactoryBuilder()
+                        .setDaemon(true)
+                        .setNameFormat(TemperatureValueSource.class.getSimpleName() + "-%d")
+                        .build()
         );
         executorService.scheduleAtFixedRate(() -> {
             int nextTemperature = ThreadLocalRandom.current().nextInt(20, 25);
@@ -28,6 +29,10 @@ public class TemperatureValueSource {
 
     public void addListener(TemperatureListener listener) {
         listenerList.add(listener);
+    }
+
+    public boolean removeListener(TemperatureListener listener) {
+        return listenerList.remove(listener);
     }
 
     public interface TemperatureListener {
