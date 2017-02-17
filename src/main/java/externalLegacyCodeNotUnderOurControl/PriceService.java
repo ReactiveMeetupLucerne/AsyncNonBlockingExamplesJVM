@@ -24,13 +24,13 @@ public class PriceService {
         println("Calculating price delayed by "+ delay_seconds+ " s");
         try {
             TimeUnit.SECONDS.sleep(delay_seconds);
+            int result = ThreadLocalRandom.current().nextInt(1, 100);
+            println("The price is " + result);
+            return result;
         } catch (InterruptedException e) {
             System.out.println("Interrupted.");
+            Thread.currentThread().interrupt();
+            return -1;
         }
-
-        int result = ThreadLocalRandom.current().nextInt(1, 100);
-        println("The price is " + result);
-        return result;
     }
-
 }
