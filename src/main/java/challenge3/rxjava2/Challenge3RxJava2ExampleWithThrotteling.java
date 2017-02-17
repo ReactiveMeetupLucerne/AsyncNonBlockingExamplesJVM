@@ -13,8 +13,6 @@ import static externalLegacyCodeNotUnderOurControl.PrintlnWithThreadname.println
 public class Challenge3RxJava2ExampleWithThrotteling {
 
     public static void main(String[] args) throws InterruptedException {
-        Thread.sleep(5);
-
         Observable<Integer> speedyTemperatureSource = Observable.range(1, 100_000_000)
                 .subscribeOn(Schedulers.io())
                 .map(tick -> ThreadLocalRandom.current().nextInt(20, 25))
