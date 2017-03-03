@@ -13,6 +13,8 @@ import scala.concurrent.duration.Duration;
 
 import java.util.concurrent.TimeUnit;
 
+import static externalLegacyCodeNotUnderOurControl.PrintlnWithThreadname.println;
+
 public class Challenge2AkkaActor {
 
     public static class PriceServiceActor extends AbstractActor {
@@ -62,7 +64,6 @@ public class Challenge2AkkaActor {
         }
     }
 
-
     private void run() throws Exception {
         ActorSystem system = ActorSystem.create("MySystem");
 
@@ -71,15 +72,13 @@ public class Challenge2AkkaActor {
         final ActorRef myActor = system.actorOf(MyActor.props(priceServiceActor));
         Future<Object> future = Patterns.ask(myActor, "calc", timeout);
         Integer amount = (Integer) Await.result(future, timeout.duration());
-        System.out.println("Price with timeout is: " + amount);
+        println("Price with timeout is: " + amount);
 
         system.shutdown();
-        System.out.println("Main thread done.");
+        println("Main thread done.");
     }
 
     public static void main(String[] args) throws Exception {
         new Challenge2AkkaActor().run();
     }
-
-
 }
