@@ -19,12 +19,22 @@ public class Challenge2AkkaActor {
 
     public static class PriceServiceActor extends AbstractActor {
         private PriceService service = new PriceService(5);
+        private Thread thread = null;
 
         public PriceServiceActor() {
             receive(ReceiveBuilder
+                    .matchEquals("interrupt", s -> {
+                        thread.interrupt();
+                    })
                     .matchEquals("calc", s -> {
-                        int result = service.getPrice();
-                        sender().tell(result, self());
+                        ActorRef sender = this.sender();
+
+                        thread = new Thread(() -> {
+                            int result = service.getPrice();
+                            sender.tell(result, ActorRef.noSender());
+                        });
+                        thread.start();
+
                     })
                     .build()
             );
@@ -45,17 +55,18 @@ public class Challenge2AkkaActor {
         public MyActor(ActorRef service) {
             this.service = service;
             receive(ReceiveBuilder
-                    .matchEquals("calc", s -> {
-                        origin = sender();
-                        getContext().setReceiveTimeout(Duration.create("2 seconds"));
-                        service.tell("calc", self());
-                    }).match(Integer.class, i -> {
-                        origin.tell(i, self());
-                    }).match(ReceiveTimeout.class, i -> {
-                        origin.tell(42, self());
-                        // TODO: stop other actor
-                    })
-                    .build()
+                            .matchEquals("calc", s -> {
+                                origin = sender();
+                                getContext().setReceiveTimeout(Duration.create("2 seconds"));
+                                service.tell("calc", self());
+                            }).match(Integer.class, i -> {
+                                origin.tell(i, self());
+                            }).match(ReceiveTimeout.class, i -> {
+                        service.tell("interrupt", self());
+                                origin.tell(42, self());
+                                // TODO: stop other actor
+                            })
+                            .build()
             );
         }
 
