@@ -1,8 +1,10 @@
 package challenge2.akka_actor;
 
-import akka.actor.*;
-import akka.event.Logging;
-import akka.event.LoggingAdapter;
+import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
+import akka.actor.ReceiveTimeout;
 import akka.japi.pf.ReceiveBuilder;
 import akka.pattern.Patterns;
 import akka.util.Timeout;
@@ -17,61 +19,31 @@ import static externalLegacyCodeNotUnderOurControl.PrintlnWithThreadname.println
 
 public class Challenge2AkkaActor {
 
-    public static class PriceServiceActor extends AbstractActor {
+    public static class MyActor extends AbstractActor {
+        private ActorRef origin;
         private PriceService service = new PriceService(5);
         private Thread thread = null;
 
-        public PriceServiceActor() {
+        public MyActor() {
             receive(ReceiveBuilder
-                    .matchEquals("interrupt", s -> {
-                        thread.interrupt();
-                    })
                     .matchEquals("calc", s -> {
-                        ActorRef sender = this.sender();
-
+                        origin = sender();
                         thread = new Thread(() -> {
                             int result = service.getPrice();
-                            sender.tell(result, ActorRef.noSender());
+                            if (origin != null) {
+                                origin.tell(result, ActorRef.noSender());
+                            }
                         });
                         thread.start();
-
+                        getContext().setReceiveTimeout(Duration.create("2 seconds"));
+                    })
+                    .match(ReceiveTimeout.class, i -> {
+                        thread.interrupt();
+                        origin.tell(42, self());
+                        origin = null;
                     })
                     .build()
             );
-        }
-
-        static Props props() {
-            return Props.create(PriceServiceActor.class);
-        }
-    }
-
-
-    public static class MyActor extends AbstractActor {
-        private final LoggingAdapter log = Logging.getLogger(context().system(), this);
-        private ActorRef origin;
-        private int result;
-        private ActorRef service;
-
-        public MyActor(ActorRef service) {
-            this.service = service;
-            receive(ReceiveBuilder
-                            .matchEquals("calc", s -> {
-                                origin = sender();
-                                getContext().setReceiveTimeout(Duration.create("2 seconds"));
-                                service.tell("calc", self());
-                            }).match(Integer.class, i -> {
-                                origin.tell(i, self());
-                            }).match(ReceiveTimeout.class, i -> {
-                        service.tell("interrupt", self());
-                                origin.tell(42, self());
-                                // TODO: stop other actor
-                            })
-                            .build()
-            );
-        }
-
-        public static Props props(ActorRef priceService) {
-            return Props.create(MyActor.class, priceService);
         }
     }
 
@@ -79,8 +51,7 @@ public class Challenge2AkkaActor {
         ActorSystem system = ActorSystem.create("MySystem");
 
         Timeout timeout = new Timeout(Duration.create(5, TimeUnit.SECONDS));
-        final ActorRef priceServiceActor = system.actorOf(PriceServiceActor.props());
-        final ActorRef myActor = system.actorOf(MyActor.props(priceServiceActor));
+        final ActorRef myActor = system.actorOf(Props.create(MyActor.class));
         Future<Object> future = Patterns.ask(myActor, "calc", timeout);
         Integer amount = (Integer) Await.result(future, timeout.duration());
         println("Price with timeout is: " + amount);
