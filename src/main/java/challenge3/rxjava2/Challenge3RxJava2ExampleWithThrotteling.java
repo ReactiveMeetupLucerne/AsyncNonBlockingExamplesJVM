@@ -25,17 +25,10 @@ public class Challenge3RxJava2ExampleWithThrotteling {
                 .flatMap(temperatureValuesWithinWindow ->
                         temperatureValuesWithinWindow.reduce(
                                 Triple.of(Integer.MAX_VALUE, Integer.MIN_VALUE, 0 /* count */),
-                                (minMaxCountTriple, tempValue) -> {
-                                    int newMin = minMaxCountTriple.getLeft();
-                                    if (tempValue < newMin) {
-                                        newMin = tempValue;
-                                    }
-                                    int newMax = minMaxCountTriple.getMiddle();
-                                    if (tempValue > newMax) {
-                                        newMax = tempValue;
-                                    }
-                                    return Triple.of(newMin, newMax, minMaxCountTriple.getRight() + 1);
-                                }
+                                (minMaxCountTriple, tempValue) ->
+                                        Triple.of(Math.min(tempValue, minMaxCountTriple.getLeft()),
+                                                Math.max(tempValue, minMaxCountTriple.getMiddle()),
+                                                minMaxCountTriple.getRight() + 1)
                         ).toObservable()
                 );
 

@@ -27,17 +27,9 @@ public class Challenge3RxJava2Example {
                 .flatMap(temperatureValuesWithinWindow ->
                         temperatureValuesWithinWindow.reduce(
                                 Pair.of(Integer.MAX_VALUE, Integer.MIN_VALUE),
-                                (minMaxPair, tempValue) -> {
-                                    int newMin = minMaxPair.getLeft();
-                                    if (tempValue < newMin) {
-                                        newMin = tempValue;
-                                    }
-                                    int newMax = minMaxPair.getRight();
-                                    if (tempValue > newMax) {
-                                        newMax = tempValue;
-                                    }
-                                    return Pair.of(newMin, newMax);
-                                }
+                                (minMaxPair, tempValue) ->
+                                        Pair.of(Math.min(tempValue, minMaxPair.getLeft()),
+                                                Math.max(tempValue, minMaxPair.getRight()))
                         ).toObservable()
                 );
 
