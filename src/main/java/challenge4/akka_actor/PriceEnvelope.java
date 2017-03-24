@@ -1,5 +1,8 @@
 package challenge4.akka_actor;
 
+/**
+ * Contains service request and response in order to map them.
+ */
 class PriceEnvelope {
     public final PriceRequest priceRequest;
     public final Price price;
