@@ -375,7 +375,8 @@ of just sharing the results we share the ongoing calculation of a result.
 
 | Java
 | http://doc.akka.io/docs/akka/2.4/java/index-actors.html[akka (actors)]
-|
+| link:./src/main/java/challenge4/akka_actor/CollapsingWithAkka.java[]
+
 
 | Java
 | http://vertx.io/docs/vertx-core/java/[Vert.x]
