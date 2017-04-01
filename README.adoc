@@ -124,9 +124,9 @@ link:./src/main/scala/challenge1/akka_stream/AkkaStreamGraphExample.scala[]
 | https://github.com/aol/cyclops-react[cyclops-react] (https://blog.jooq.org/2016/05/12/cyclops-react-organises-the-cambrian-explosion-of-java-8-libraries[Intro])
 |
 
-| ...
-| ...
-|
+| Kotlin
+| Coroutines
+| link:./src/main/kotlin/challenge1/coroutines/KotlinCoroutinesExample.kt[]
 
 | ...
 | ... yours?
